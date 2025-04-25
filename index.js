@@ -1,6 +1,5 @@
 let puppeteer = require('puppeteer');
 let express = require('express');
-import serverless from "serverless-http";
 
 const app = express();
 app.get('/',async (req,res) =>{

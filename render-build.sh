@@ -15,7 +15,7 @@ mkdir -p $PUPPETEER_CACHE_DIR
 npx puppeteer browsers install chrome
 
 #Store/pull Puppeteer cache with build cache
-if [[ ! -d $PUPPETEER_CACHE_DIR ]]; then
+if [[ -d $PUPPETEER_CACHE_DIR ]]; then
 echo "...Copying Puppeteer Cache from Build Cache"
 # Copying from the actual path where Puppeteer stores its Chrome binary
 cp -R /opt/render/.cache/puppeteer/chrome/linux-135.0.7049.114/chrome-linux64/chrome $PUPPETEER_CACHE_DIR

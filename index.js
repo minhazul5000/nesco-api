@@ -9,7 +9,13 @@ app.get('/',async (req,res) =>{
 app.get('/nesco', async (req, res) => {
   
     // Launch the browser and open a new blank page
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+      ]
+    });
     const page = await browser.newPage();
   
     // Navigate the page to a URL

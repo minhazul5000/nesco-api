@@ -1,6 +1,6 @@
 let puppeteer = require('puppeteer');
 let express = require('express');
-
+require("dotenv").config();
 const app = express();
 app.get('/',async (req,res) =>{
   res.send("Simple Nesco Web Scrapper API");
@@ -10,11 +10,16 @@ app.get('/nesco', async (req, res) => {
   
     // Launch the browser and open a new blank page
     const browser = await puppeteer.launch({
-      headless: true,
       args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-      ]
+        "--disable-setuid-sandbox",
+        "--no-sandbox",
+        "--single-process",
+        "--no-zygote",
+      ],
+      executablePath:
+        process.env.NODE_ENV === "production"
+          ? process.env.PUPPETEER_EXECUTABLE_PATH
+          : puppeteer.executablePath(),
     });
     const page = await browser.newPage();
   

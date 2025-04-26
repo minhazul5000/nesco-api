@@ -44,12 +44,14 @@ app.get('/nesco', async (req, res) => {
     await browser.close();
 
     let json = {
-      "account_no": data[0].trim(),
-      "customer_name":data[1].trim(),
-      "address":data[3].trim(),
-      "meter_no":data[8].trim(),
-      "meter_install":data[13].trim(),
-      "balance":data[15].trim()
+      "nesco" :{
+          "account_no": data[0].trim(),
+          "customer_name":data[1].trim(),
+          "address":data[3].trim(),
+          "meter_no":data[8].trim(),
+          "meter_install":data[13].trim(),
+          "balance":data[15].trim()
+      }
     };
     let response = JSON.stringify(json);
   
